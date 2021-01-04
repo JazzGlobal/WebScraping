@@ -18,6 +18,7 @@ def run_news(parse=False, write=False,**params):
     URL = 'https://www.google.com/search?pz=1&cf=all&ned=us&hl=en&tbm=nws&gl=us&as_q={query}&as_occt=any&as_drrb=b&as_mindate={month}%2F%{from_day}%2F{year}&as_maxdate={month}%2F{to_day}%2F{year}&tbs=cdr%3A1%2Ccd_min%3A3%2F1%2F13%2Ccd_max%3A3%2F2%2F13&as_nsrc=Gulf%20Times&authuser=0'
     response = requests.get(URL.format(**params))
     print(response.url)
+    print('Request Finished With Response Code:', response.status_code)
     title = params['query'] + str(params['month']) + str(params['from_day']) + str(params['to_day']) + str(params['year']) + "_webpage"
     f = open(f'{title}.html', 'w')
     f.write(response.text)
